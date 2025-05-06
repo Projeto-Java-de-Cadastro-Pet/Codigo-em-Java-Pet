@@ -1,0 +1,112 @@
+@@ -0,0 +1,111 @@
+ import java.util.List;
+ import java.util.ArrayList;
+ 
+ class Pet {
+     String nome;
+     int idade;
+     String especie;
+     String raca;
+     Dono dono;
+     List<Consulta> historicoConsultas;
+ 
+     public Pet(String nome, int idade, String especie, String raca, Dono dono) {
+         this.nome = nome;
+         this.idade = idade;
+         this.especie = especie;
+         this.raca = raca;
+         this.dono = dono;
+         this.historicoConsultas = new ArrayList<>();
+     }
+     
+     public void adicionarConsulta(Consulta consulta) {
+         historicoConsultas.add(consulta);
+     }
+ }
+ 
+ class Cachorro extends Pet {
+     int nivelEnergia;
+     String brinquedoFavorito;
+ 
+     public Cachorro(String nome, int idade, String raca, Dono dono, int nivelEnergia, String brinquedoFavorito) {
+         super(nome, idade, "Cachorro", raca, dono);
+         this.nivelEnergia = nivelEnergia;
+         this.brinquedoFavorito = brinquedoFavorito;
+     }
+ }
+ 
+ class Gato extends Pet {
+     boolean gostaDeCaixa;
+     int sonecasPorDia;
+ 
+     public Gato(String nome, int idade, String raca, Dono dono, boolean gostaDeCaixa, int sonecasPorDia) {
+         super(nome, idade, "Gato", raca, dono);
+         this.gostaDeCaixa = gostaDeCaixa;
+         this.sonecasPorDia = sonecasPorDia;
+     }
+ }
+ 
+ class Dono {
+     String nome;
+     String telefone;
+     String endereco;
+     List<Pet> pets;
+ 
+     public Dono(String nome, String telefone, String endereco) {
+         this.nome = nome;
+         this.telefone = telefone;
+         this.endereco = endereco;
+         this.pets = new ArrayList<>();
+     }
+     
+     public void adicionarPet(Pet pet) {
+         pets.add(pet);
+     }
+ }
+ 
+ class Veterinario {
+     String nome;
+     String crm;
+     String especialidade;
+     
+     public Veterinario(String nome, String crm, String especialidade) {
+         this.nome = nome;
+         this.crm = crm;
+         this.especialidade = especialidade;
+     }
+ }
+ 
+ class Consulta {
+     String data;
+     Veterinario veterinario;
+     String descricao;
+     Pet pet;
+     
+     public Consulta(String data, Veterinario veterinario, String descricao, Pet pet) {
+         this.data = data;
+         this.veterinario = veterinario;
+         this.descricao = descricao;
+         this.pet = pet;
+     }
+ }
+ 
+ public class Main {
+     public static void main(String[] args) {
+         Dono dono = new Dono("Fernanda", "99999-9999", "Rua dos Pets, 123");
+         Cachorro cachorro = new Cachorro("lady", 10, "vira lata", dono, 8, "Bola");
+         Gato gato = new Gato("greta", 3, "Siames", dono, true, 5);
+         
+         dono.adicionarPet(cachorro);
+         dono.adicionarPet(gato);
+         
+         Veterinario vet = new Veterinario("Dr. André", "12345", "Clínico Geral");
+         Consulta consulta = new Consulta("24/03/2025", vet, "Check-up de rotina", cachorro);
+         cachorro.adicionarConsulta(consulta);
+         
+         System.out.println("Dono: " + dono.nome);
+         System.out.println("Pets de " + dono.nome + ":");
+         for (Pet pet : dono.pets) {
+             System.out.println("- " + pet.nome + " (" + pet.especie + ")");
+         }
+     }
+ }
