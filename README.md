@@ -11,3 +11,5 @@ Herança e Polimorfismo
 📌 Melhorias Futuras 🔹 Criar uma interface gráfica (JavaFX/Swing) 🔹 Conectar a um banco de dados (MySQL/SQLite) 🔹 Implementar um sistema de login para donos e veterinários
 
 Esse script em Java é uma atividade e teste. Melhorias futuras serão feitas com o próposito de adquirir experiencia e conhecimento em Java.
+
+javac CadastroPet.java
